@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:gibbor/auth/service/auth_service.dart';
-import 'package:gibbor/const/icons.dart';
+import 'package:Gibbor/auth/service/auth_service.dart';
+import 'package:Gibbor/const/icons.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
@@ -81,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 70,
                 child: SvgPicture.asset(
                   gibbor,
-                  color: const Color(0xFF394730),
+                  color: Colors.black,
                 ),
               ),
               Padding(
@@ -123,8 +123,8 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: const EdgeInsets.all(24.0),
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF394730)),
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: Colors.black),
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       if (isLogin) {

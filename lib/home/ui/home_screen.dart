@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gibbor/auth/service/auth_service.dart';
-import 'package:gibbor/feed/ui/feed_screen.dart';
-import 'package:gibbor/home/ui/home_screen_2.dart';
-import 'package:gibbor/profile/ui/profile_screen.dart';
+import 'package:Gibbor/auth/service/auth_service.dart';
+import 'package:Gibbor/feed/ui/feed_screen.dart';
+import 'package:Gibbor/home/ui/home_screen_2.dart';
+import 'package:Gibbor/profile/ui/profile_screen.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
 /*       appBar: AppBar(
-        backgroundColor: const Color(0xFF394730),
+        backgroundColor: Colors.black,,
         title: const Text('Gibbor Airsoft'),
       ), */
       body: PageView(
@@ -47,14 +47,14 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       bottomNavigationBar: Container(
-        color: const Color(0xFF394730),
+        color: Colors.black,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
           child: GNav(
-            backgroundColor: const Color(0xFF394730),
+            backgroundColor: Colors.black,
             color: Colors.white,
             activeColor: Colors.white,
-            tabBackgroundColor: const Color(0xFF3e5b3d),
+            tabBackgroundColor: Colors.grey,
             padding: const EdgeInsets.all(10),
             gap: 8,
             selectedIndex: CurrentPage,

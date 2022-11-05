@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:gibbor/auth/service/auth_check.dart';
-import 'package:gibbor/auth/service/auth_service.dart';
+import 'package:Gibbor/auth/service/auth_check.dart';
+import 'package:Gibbor/auth/service/auth_service.dart';
 import 'package:provider/provider.dart';
 
 void main() async {

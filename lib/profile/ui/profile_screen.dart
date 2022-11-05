@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gibbor/auth/service/auth_service.dart';
+import 'package:Gibbor/auth/service/auth_service.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -14,11 +14,11 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF394730),
+        backgroundColor: Colors.black,
         title: const Text('Perfil'),
       ),
       body: Padding(
-          padding: EdgeInsets.symmetric(vertical: 24),
+          padding: const EdgeInsets.symmetric(vertical: 24),
           child: OutlinedButton(
             onPressed: () => context.read<AuthService>().logout(),
             style: OutlinedButton.styleFrom(

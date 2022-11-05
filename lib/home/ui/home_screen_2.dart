@@ -12,7 +12,7 @@ class _ProfilePageState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color(0xFF394730),
+          backgroundColor: Colors.black,
           title: const Text('Gibbor Team'),
         ),
         body: Container(
