@@ -15,6 +15,7 @@ class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
   final email = TextEditingController();
   final senha = TextEditingController();
+  bool loading = false;
 
   bool isLogin = true;
   late String titulo;
@@ -43,9 +44,11 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   login() async {
+    setState(() => loading = true);
     try {
       await context.read<AuthService>().login(email.text, senha.text);
     } on AuthExceptions catch (e) {
+      setState(() => loading = false);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(e.message),
       ));
@@ -53,9 +56,11 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   register() async {
+    setState(() => loading = true);
     try {
       await context.read<AuthService>().register(email.text, senha.text);
     } on AuthExceptions catch (e) {
+      setState(() => loading = false);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(e.message),
       ));
@@ -67,24 +72,25 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(top: 100),
+          padding: const EdgeInsets.only(top: 80),
           child: Form(
             key: formKey,
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Text(
-                titulo,
-                style: const TextStyle(
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: -1.5),
+              SizedBox(
+                height: 70,
+                child: SvgPicture.asset(
+                  gibbor,
+                  color: const Color(0xFF394730),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(24),
                 child: TextFormField(
                   controller: email,
                   decoration: const InputDecoration(
-                      border: OutlineInputBorder(), labelText: 'Email'),
+                      //border: OutlineInputBorder(),
+                      labelText: 'Email'),
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -101,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                   controller: senha,
                   obscureText: true,
                   decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
+                    // border: OutlineInputBorder(),
                     labelText: 'Senha',
                   ),
                   validator: (value) {
@@ -117,6 +123,8 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: const EdgeInsets.all(24.0),
                 child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF394730)),
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       if (isLogin) {
@@ -127,16 +135,29 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.check),
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Text(
-                          actionButton,
-                          style: const TextStyle(fontSize: 20),
-                        ),
-                      )
-                    ],
+                    children: (loading)
+                        ? [
+                            const Padding(
+                              padding: EdgeInsets.all(16),
+                              child: SizedBox(
+                                width: 24,
+                                height: 24,
+                                child: CircularProgressIndicator(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            )
+                          ]
+                        : [
+                            const Icon(Icons.check),
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Text(
+                                actionButton,
+                                style: const TextStyle(fontSize: 20),
+                              ),
+                            )
+                          ],
                   ),
                 ),
               ),

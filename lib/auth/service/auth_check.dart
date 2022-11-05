@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gibbor/auth/service/auth_service.dart';
 import 'package:gibbor/auth/ui/login_screen.dart';
 import 'package:gibbor/home/ui/home_screen.dart';
-import 'package:gibbor/main.dart';
 import 'package:provider/provider.dart';
 
 class AuthCheck extends StatefulWidget {
