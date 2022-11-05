@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gibbor/auth/service/auth_service.dart';
+import 'package:gibbor/const/icons.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
@@ -141,7 +143,8 @@ class _LoginPageState extends State<LoginPage> {
               TextButton(
                 onPressed: () => setFormAction(!isLogin),
                 child: Text(toggleButton),
-              )
+              ),
+              const Divider(color: Colors.white),
             ]),
           ),
         ),
